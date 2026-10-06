@@ -1,0 +1,986 @@
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>برای آرینا ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;900&family=Lalezar&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { overflow-x:hidden; }
+body {
+  font-family:'Vazirmatn', sans-serif;
+  background: #05000d;
+  min-height: 400vh;
+  position: relative;
+  color:#fff;
+}
+
+/* ============ SKY (night gradient) ============ */
+.sky {
+  position:fixed; inset:0; z-index:0;
+  background:
+    radial-gradient(ellipse at 70% 15%, rgba(157,78,221,0.35), transparent 55%),
+    radial-gradient(ellipse at 20% 70%, rgba(74,16,96,0.55), transparent 60%),
+    linear-gradient(180deg, #03000a 0%, #0d0220 25%, #1d0438 50%, #350a5c 75%, #4c0f7a 100%);
+}
+.moon {
+  position:fixed; top:8%; right:12%; width:110px; height:110px;
+  border-radius:50%;
+  background: radial-gradient(circle at 35% 35%, #f5e6ff, #c77dff 60%, #7a2fb8 100%);
+  box-shadow: 0 0 60px #c77dff, 0 0 140px rgba(157,78,221,0.7), inset -18px -18px 40px rgba(60,0,120,0.6);
+  z-index:1; animation: moonGlow 6s ease-in-out infinite;
+}
+.moon::before, .moon::after {
+  content:''; position:absolute; border-radius:50%;
+  background: rgba(120,40,180,0.35);
+}
+.moon::before { width:22px; height:22px; top:28%; left:22%; }
+.moon::after { width:14px; height:14px; top:55%; left:58%; }
+@keyframes moonGlow {
+  0%,100% { box-shadow: 0 0 60px #c77dff, 0 0 140px rgba(157,78,221,0.7), inset -18px -18px 40px rgba(60,0,120,0.6); }
+  50% { box-shadow: 0 0 90px #e0b3ff, 0 0 190px rgba(157,78,221,0.9), inset -18px -18px 40px rgba(60,0,120,0.6); }
+}
+
+/* ============ STARS ============ */
+.stars { position:fixed; inset:0; pointer-events:none; z-index:2; }
+.star {
+  position:absolute; background:#fff; border-radius:50%;
+  animation: twinkle 3s infinite ease-in-out;
+}
+@keyframes twinkle {
+  0%,100% { opacity:0.15; transform:scale(0.5); }
+  50% { opacity:1; transform:scale(1.4); }
+}
+.shooting {
+  position:absolute; width:3px; height:3px; background:#fff; border-radius:50%;
+  box-shadow: 0 0 12px 4px #c77dff, 0 0 30px 8px rgba(157,78,221,0.7);
+  animation: shoot 4s linear infinite;
+  opacity:0;
+}
+.shooting::after {
+  content:''; position:absolute; top:50%; right:0;
+  width:120px; height:1.5px; transform: translateY(-50%);
+  background: linear-gradient(90deg, transparent, #c77dff, #fff);
+}
+@keyframes shoot {
+  0% { opacity:0; transform: translate(0,0) rotate(35deg); }
+  8% { opacity:1; }
+  25% { opacity:0; transform: translate(-320px, 220px) rotate(35deg); }
+  100% { opacity:0; transform: translate(-320px, 220px) rotate(35deg); }
+}
+
+/* ============ RAIN ============ */
+.rain { position:fixed; inset:0; pointer-events:none; z-index:3; overflow:hidden; }
+.drop {
+  position:absolute; width:1.5px;
+  background: linear-gradient(transparent, rgba(199,125,255,0.9), rgba(255,255,255,0.6));
+  animation: fall linear infinite;
+  border-radius:2px;
+}
+@keyframes fall {
+  to { transform: translateY(110vh); }
+}
+
+/* ============ SEA (realistic layered waves) ============ */
+.sea {
+  position:fixed; bottom:0; left:0; width:100%; height:230px;
+  z-index:4; pointer-events:none; overflow:hidden;
+  background: linear-gradient(180deg, rgba(20,0,50,0) 0%, rgba(30,0,70,0.35) 40%, rgba(10,0,30,0.85) 100%);
+}
+.sea-glow {
+  position:absolute; top:-10px; left:50%; transform:translateX(-50%);
+  width:80%; height:60px;
+  background: radial-gradient(ellipse at center, rgba(199,125,255,0.5), transparent 70%);
+  filter: blur(20px);
+}
+.wave-svg {
+  position:absolute; bottom:0; left:0; width:200%; height:100%;
+  animation: waveMove 14s linear infinite;
+}
+.wave-svg.slow { animation-duration:22s; opacity:0.6; }
+.wave-svg.slower { animation-duration:30s; opacity:0.4; }
+.wave-svg.back { animation-duration:18s; opacity:0.75; }
+@keyframes waveMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.sea-shimmer {
+  position:absolute; inset:0;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 40px, rgba(199,125,255,0.06) 40px 42px),
+    repeating-linear-gradient(90deg, transparent 0 90px, rgba(255,110,199,0.05) 90px 92px);
+  animation: shimmerMove 8s linear infinite;
+  mix-blend-mode: screen;
+}
+@keyframes shimmerMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-80px); }
+}
+.reflection {
+  position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:100px; height:230px;
+  background: linear-gradient(180deg, rgba(199,125,255,0.35), rgba(199,125,255,0.05) 60%, transparent);
+  filter: blur(15px);
+  animation: reflectPulse 5s ease-in-out infinite;
+}
+@keyframes reflectPulse {
+  0%,100% { opacity:0.5; }
+  50% { opacity:1; }
+}
+
+/* ============ TITLE ============ */
+.title-wrap {
+  position:relative; z-index:10;
+  text-align:center;
+  padding-top:12vh;
+}
+.main-title {
+  font-family:'Lalezar', cursive;
+  font-size: clamp(3.5rem, 13vw, 10rem);
+  background: linear-gradient(90deg, #c77dff, #ff6ec7, #9d4edd, #c77dff, #ff6ec7);
+  background-size:400% 400%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation: shine 6s ease infinite;
+  filter: drop-shadow(0 0 30px rgba(199,125,255,0.7));
+  letter-spacing: 6px;
+}
+@keyframes shine {
+  0%,100% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+}
+.sub-title {
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  color:#e0b3ff;
+  margin-top:14px;
+  opacity:0.85;
+  animation: fadeIn 3s ease;
+}
+@keyframes fadeIn { from{opacity:0;} to{opacity:0.85;} }
+
+/* ============ DOG (SVG with detail) ============ */
+.dog-tracker {
+  position:absolute;
+  top: 55vh;
+  left: 5%;
+  width: 210px;
+  z-index: 50;
+}
+.cloud-bubble {
+  position:absolute;
+  top:-80px;
+  left:50%;
+  transform:translateX(-50%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(240,220,255,0.95));
+  color:#4a1060;
+  padding:12px 22px;
+  border-radius:30px;
+  font-weight:700;
+  font-size:1rem;
+  white-space:nowrap;
+  box-shadow: 0 0 30px rgba(199,125,255,0.95), 0 0 60px rgba(157,78,221,0.6), inset 0 0 15px rgba(199,125,255,0.3);
+  animation: float 2.5s ease-in-out infinite;
+  border: 2px solid rgba(199,125,255,0.4);
+}
+.cloud-bubble::after {
+  content:'';
+  position:absolute;
+  bottom:-9px; left:50%;
+  transform:translateX(-50%);
+  width:0; height:0;
+  border-left:11px solid transparent;
+  border-right:11px solid transparent;
+  border-top:13px solid rgba(240,220,255,0.95);
+}
+@keyframes float {
+  0%,100% { transform:translateX(-50%) translateY(0); }
+  50% { transform:translateX(-50%) translateY(-10px); }
+}
+
+.dog-svg {
+  width:210px; height:auto;
+  filter: drop-shadow(0 10px 25px rgba(199,125,255,0.6)) drop-shadow(0 0 40px rgba(157,78,221,0.4));
+}
+/* animated parts */
+.dog-body-bob {
+  animation: bodyBob 0.9s ease-in-out infinite;
+  transform-origin: 50% 70%;
+}
+@keyframes bodyBob {
+  0%,100% { transform: translateY(0) rotate(-0.8deg); }
+  50% { transform: translateY(-3px) rotate(0.8deg); }
+}
+.leg-front-left  { transform-origin: 62% 20%; animation: legFL 0.9s ease-in-out infinite; }
+.leg-front-right { transform-origin: 62% 20%; animation: legFR 0.9s ease-in-out infinite; animation-delay: -0.45s; }
+.leg-back-left   { transform-origin: 30% 20%; animation: legBL 0.9s ease-in-out infinite; animation-delay: -0.2s; }
+.leg-back-right  { transform-origin: 30% 20%; animation: legBR 0.9s ease-in-out infinite; animation-delay: -0.65s; }
+@keyframes legFL {
+  0%,100% { transform: rotate(-22deg); }
+  50% { transform: rotate(22deg); }
+}
+@keyframes legFR {
+  0%,100% { transform: rotate(22deg); }
+  50% { transform: rotate(-22deg); }
+}
+@keyframes legBL {
+  0%,100% { transform: rotate(18deg); }
+  50% { transform: rotate(-18deg); }
+}
+@keyframes legBR {
+  0%,100% { transform: rotate(-18deg); }
+  50% { transform: rotate(18deg); }
+}
+.dog-tail-svg {
+  transform-origin: 15% 90%;
+  animation: tailWag 0.35s ease-in-out infinite alternate;
+}
+@keyframes tailWag {
+  from { transform: rotate(-18deg); }
+  to { transform: rotate(25deg); }
+}
+.dog-ear-svg {
+  transform-origin: 80% 85%;
+  animation: earTwitch 2s ease-in-out infinite;
+}
+@keyframes earTwitch {
+  0%,90%,100% { transform: rotate(0deg); }
+  94% { transform: rotate(-6deg); }
+}
+
+/* ============ BUTTON ============ */
+.button-zone {
+  position:absolute;
+  top: 340vh;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:60;
+  text-align:center;
+}
+.magic-btn {
+  font-family:'Lalezar', cursive;
+  font-size: clamp(1.3rem, 3vw, 2.2rem);
+  padding: 22px 60px;
+  color:#fff;
+  background: linear-gradient(135deg, #9d4edd, #c77dff, #ff6ec7, #9d4edd);
+  background-size:300% 300%;
+  border:none;
+  border-radius:60px;
+  cursor:pointer;
+  position:relative;
+  animation: shine 4s ease infinite, pulseBtn 2s ease-in-out infinite;
+  box-shadow: 0 0 40px rgba(199,125,255,0.95), 0 0 80px rgba(157,78,221,0.7), inset 0 0 25px rgba(255,255,255,0.25);
+  transition: transform 0.3s;
+  overflow:hidden;
+  text-shadow: 0 0 12px rgba(255,255,255,0.7);
+}
+.magic-btn:hover { transform: scale(1.08); }
+.magic-btn::before {
+  content:'';
+  position:absolute;
+  top:-50%; left:-50%;
+  width:200%; height:200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.5), transparent 60%);
+  animation: rotateGlow 5s linear infinite;
+}
+@keyframes rotateGlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes pulseBtn {
+  0%,100% { box-shadow: 0 0 40px rgba(199,125,255,0.95), 0 0 80px rgba(157,78,221,0.7); }
+  50% { box-shadow: 0 0 60px rgba(255,110,199,1), 0 0 120px rgba(157,78,221,0.95); }
+}
+
+/* ============ PAGE 2 (sunset) ============ */
+.page2 {
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:999;
+  background: linear-gradient(180deg, #1a0033 0%, #3a0a5c 20%, #7a1f6a 45%, #c33c6e 65%, #ff7a45 82%, #ffc46b 100%);
+  overflow-y:auto;
+  padding: 60px 20px 150px;
+}
+.page2.active { display:block; }
+
+.page2-sun {
+  position:absolute;
+  top:12%; right:10%;
+  width:150px; height:150px;
+  border-radius:50%;
+  background: radial-gradient(circle at 40% 40%, #fff2b8, #ffd166 40%, #ff8c42 75%, #d4517a 100%);
+  box-shadow: 0 0 100px #ff8c42, 0 0 200px rgba(212,81,122,0.8), 0 0 300px rgba(255,140,66,0.5);
+  animation: sunPulse 5s ease-in-out infinite;
+}
+@keyframes sunPulse {
+  0%,100% { transform:scale(1); }
+  50% { transform:scale(1.08); }
+}
+.page2-sun-rays {
+  position:absolute; top:12%; right:10%;
+  width:150px; height:150px;
+  border-radius:50%;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(255,209,102,0.25) 10deg, transparent 20deg, transparent 40deg, rgba(255,140,66,0.2) 50deg, transparent 60deg, transparent 90deg, rgba(255,209,102,0.25) 100deg, transparent 110deg, transparent 150deg, rgba(255,140,66,0.2) 160deg, transparent 170deg, transparent 220deg, rgba(255,209,102,0.25) 230deg, transparent 240deg, transparent 300deg, rgba(255,140,66,0.2) 310deg, transparent 320deg);
+  animation: rotateRays 40s linear infinite;
+  filter: blur(6px);
+  transform: scale(2.2);
+  pointer-events:none;
+}
+@keyframes rotateRays {
+  from { transform: rotate(0deg) scale(2.2); }
+  to { transform: rotate(360deg) scale(2.2); }
+}
+
+.page2-clouds {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  overflow:hidden; pointer-events:none;
+}
+.cloud {
+  position:absolute;
+  background: linear-gradient(135deg, rgba(255,180,150,0.55), rgba(255,120,120,0.35));
+  border-radius:100px;
+  filter: blur(2px);
+  animation: cloudDrift linear infinite;
+}
+.cloud::before, .cloud::after {
+  content:''; position:absolute; background: inherit; border-radius:50%;
+}
+.cloud.c1 { width:180px; height:50px; top:15%; left:-25%; animation-duration:60s; }
+.cloud.c1::before { width:90px; height:90px; top:-45px; left:20px; }
+.cloud.c1::after { width:70px; height:70px; top:-30px; left:90px; }
+.cloud.c2 { width:240px; height:60px; top:35%; left:-30%; animation-duration:80s; opacity:0.7; }
+.cloud.c2::before { width:120px; height:120px; top:-60px; left:30px; }
+.cloud.c2::after { width:90px; height:90px; top:-40px; left:130px; }
+.cloud.c3 { width:150px; height:40px; top:55%; left:-20%; animation-duration:70s; opacity:0.6; }
+.cloud.c3::before { width:75px; height:75px; top:-38px; left:15px; }
+.cloud.c3::after { width:60px; height:60px; top:-25px; left:75px; }
+@keyframes cloudDrift {
+  from { transform: translateX(0); }
+  to { transform: translateX(160vw); }
+}
+
+.letter {
+  max-width: 850px;
+  margin: 0 auto;
+  background: rgba(20,0,40,0.65);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 2px solid rgba(255,180,150,0.4);
+  border-radius: 28px;
+  padding: 45px 35px;
+  position:relative;
+  z-index:5;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 80px rgba(255,140,66,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+  animation: slideUp 1.5s ease;
+}
+@keyframes slideUp {
+  from { opacity:0; transform: translateY(60px); }
+  to { opacity:1; transform: translateY(0); }
+}
+.letter h2 {
+  font-family:'Lalezar', cursive;
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  text-align:center;
+  background: linear-gradient(90deg, #ffd166, #ff8c42, #ff6ec7, #ffd166);
+  background-size:300% 300%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  margin-bottom:28px;
+  animation: shine 5s ease infinite;
+  filter: drop-shadow(0 0 20px rgba(255,140,66,0.6));
+}
+.letter p {
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  line-height: 2.3;
+  color:#f5e6ff;
+  text-align:justify;
+}
+.signature {
+  text-align:left;
+  margin-top:32px;
+  font-weight:700;
+  background: linear-gradient(90deg, #ff6ec7, #c77dff);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  font-size:1.2rem;
+}
+
+/* ============ DOG 2 + FORM ============ */
+.dog2-zone {
+  max-width:800px;
+  margin: 80px auto 0;
+  position:relative;
+  z-index:5;
+  text-align:center;
+}
+.dog2-wrap {
+  position:relative;
+  display:inline-block;
+  animation: dogCome 2.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes dogCome {
+  from { transform: translateY(-250px) rotate(-8deg); opacity:0; }
+  to { transform: translateY(0) rotate(0); opacity:1; }
+}
+.cloud2 {
+  position:absolute;
+  top:-85px; left:50%;
+  transform:translateX(-50%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,230,220,0.95));
+  color:#7a1f6a;
+  padding:12px 24px;
+  border-radius:30px;
+  font-weight:700;
+  font-size:1.05rem;
+  white-space:nowrap;
+  box-shadow: 0 0 30px rgba(255,140,66,0.8), 0 0 60px rgba(212,81,122,0.5);
+  animation: float 2.5s ease-in-out infinite;
+  border: 2px solid rgba(255,140,66,0.4);
+}
+.cloud2::after {
+  content:'';
+  position:absolute;
+  bottom:-9px; left:50%;
+  transform:translateX(-50%);
+  width:0; height:0;
+  border-left:11px solid transparent;
+  border-right:11px solid transparent;
+  border-top:13px solid rgba(255,230,220,0.95);
+}
+
+/* ============ FORM ============ */
+.form-box {
+  max-width:680px;
+  margin: 50px auto 80px;
+  background: rgba(20,0,40,0.7);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 2px solid rgba(255,180,150,0.4);
+  border-radius: 28px;
+  padding: 35px 30px;
+  position:relative;
+  z-index:5;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 80px rgba(255,140,66,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.form-box label {
+  display:block;
+  font-family:'Lalezar', cursive;
+  font-size: clamp(1.3rem, 3.2vw, 1.9rem);
+  background: linear-gradient(90deg, #ffd166, #ff8c42, #ff6ec7);
+  background-size:200% 200%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  margin-bottom:20px;
+  text-align:center;
+  animation: shine 4s ease infinite;
+  filter: drop-shadow(0 0 15px rgba(255,140,66,0.5));
+}
+.form-box textarea {
+  width:100%;
+  min-height:150px;
+  padding:18px;
+  border-radius:20px;
+  border: 2px solid rgba(255,140,66,0.4);
+  background: rgba(0,0,0,0.5);
+  color:#fff;
+  font-family:'Vazirmatn',sans-serif;
+  font-size:1.05rem;
+  line-height:1.8;
+  resize:vertical;
+  outline:none;
+  transition: 0.3s;
+}
+.form-box textarea::placeholder { color: rgba(255,255,255,0.4); }
+.form-box textarea:focus {
+  border-color:#ff8c42;
+  box-shadow: 0 0 30px rgba(255,140,66,0.7), inset 0 0 20px rgba(255,140,66,0.15);
+}
+.send-btn {
+  display:block;
+  margin: 25px auto 0;
+  font-family:'Lalezar', cursive;
+  font-size:1.5rem;
+  padding: 18px 70px;
+  color:#fff;
+  background: linear-gradient(135deg, #9d4edd, #ff6ec7, #ff8c42, #9d4edd);
+  background-size:300% 300%;
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  animation: shine 4s ease infinite;
+  box-shadow: 0 0 30px rgba(255,140,66,0.8), 0 0 60px rgba(212,81,122,0.5), inset 0 0 20px rgba(255,255,255,0.2);
+  transition: transform 0.3s;
+  text-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+.send-btn:hover { transform: scale(1.06); }
+.send-btn:disabled { opacity:0.6; cursor:not-allowed; }
+
+.toast {
+  position:fixed;
+  bottom:30px; left:50%;
+  transform: translateX(-50%) translateY(120px);
+  background: linear-gradient(135deg,#9d4edd,#ff6ec7,#ff8c42);
+  background-size:200% 200%;
+  color:#fff;
+  padding:16px 40px;
+  border-radius:50px;
+  font-weight:700;
+  z-index:9999;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 40px rgba(255,140,66,0.9), 0 10px 30px rgba(0,0,0,0.4);
+  font-size:1.05rem;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+@media (max-width:600px) {
+  .dog-tracker { width:150px; }
+  .dog-svg { width:150px; }
+  .cloud-bubble { font-size:0.8rem; padding:9px 14px; top:-60px; }
+  .letter { padding:28px 20px; }
+  .page2-sun, .page2-sun-rays { width:90px; height:90px; }
+  .moon { width:70px; height:70px; }
+  .cloud2 { font-size:0.85rem; padding:9px 14px; top:-65px; }
+}
+</style>
+</head>
+<body>
+
+<!-- SKY + MOON -->
+<div class="sky"></div>
+<div class="moon"></div>
+
+<!-- STARS -->
+<div class="stars" id="stars">
+  <div class="shooting" style="top:15%; left:80%; animation-delay:2s;"></div>
+  <div class="shooting" style="top:30%; left:60%; animation-delay:8s;"></div>
+  <div class="shooting" style="top:8%; left:40%; animation-delay:14s;"></div>
+</div>
+
+<!-- RAIN -->
+<div class="rain" id="rain"></div>
+
+<!-- SEA -->
+<div class="sea">
+  <div class="sea-glow"></div>
+  <div class="reflection"></div>
+  <div class="sea-shimmer"></div>
+
+  <!-- back wave -->
+  <svg class="wave-svg slower back" viewBox="0 0 1200 230" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="wg1" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="rgba(120,40,180,0.55)"/>
+        <stop offset="100%" stop-color="rgba(20,0,50,0.9)"/>
+      </linearGradient>
+    </defs>
+    <path fill="url(#wg1)" d="M0,110 C150,80 300,140 450,110 C600,80 750,140 900,110 C1050,80 1150,130 1200,110 L1200,230 L0,230 Z"/>
+  </svg>
+
+  <svg class="wave-svg slow" viewBox="0 0 1200 230" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="wg2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="rgba(157,78,221,0.6)"/>
+        <stop offset="100%" stop-color="rgba(40,5,80,0.95)"/>
+      </linearGradient>
+    </defs>
+    <path fill="url(#wg2)" d="M0,130 C180,95 320,165 500,130 C680,95 820,165 1000,130 C1120,105 1180,140 1200,130 L1200,230 L0,230 Z"/>
+  </svg>
+
+  <svg class="wave-svg" viewBox="0 0 1200 230" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="wg3" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="rgba(199,125,255,0.7)"/>
+        <stop offset="100%" stop-color="rgba(60,10,110,1)"/>
+      </linearGradient>
+    </defs>
+    <path fill="url(#wg3)" d="M0,160 C200,125 400,190 600,160 C800,130 1000,195 1200,160 L1200,230 L0,230 Z"/>
+  </svg>
+
+  <!-- foam highlights -->
+  <svg class="wave-svg" viewBox="0 0 1200 230" preserveAspectRatio="none" style="animation-duration:16s; opacity:0.5;">
+    <path fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" d="M0,160 C200,125 400,190 600,160 C800,130 1000,195 1200,160"/>
+  </svg>
+</div>
+
+<!-- TITLE -->
+<div class="title-wrap">
+  <h1 class="main-title">Arina</h1>
+  <p class="sub-title">این دنیای کوچیک فقط برای تو ساخته شده ✨</p>
+</div>
+
+<!-- DOG (detailed doberman SVG) -->
+<div class="dog-tracker" id="dogTracker">
+  <div class="cloud-bubble">آرینا دنبالم بیا 🐾</div>
+  <svg class="dog-svg" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="bodyGrad" cx="50%" cy="40%" r="70%">
+        <stop offset="0%" stop-color="#3a2418"/>
+        <stop offset="60%" stop-color="#1f1108"/>
+        <stop offset="100%" stop-color="#0d0603"/>
+      </radialGradient>
+      <radialGradient id="tanGrad" cx="50%" cy="40%" r="70%">
+        <stop offset="0%" stop-color="#b3762f"/>
+        <stop offset="70%" stop-color="#7a4a1e"/>
+        <stop offset="100%" stop-color="#4a2a10"/>
+      </radialGradient>
+      <radialGradient id="noseGrad" cx="40%" cy="35%" r="60%">
+        <stop offset="0%" stop-color="#3a3a3a"/>
+        <stop offset="100%" stop-color="#000"/>
+      </radialGradient>
+      <radialGradient id="eyeGrad" cx="40%" cy="35%" r="60%">
+        <stop offset="0%" stop-color="#8a5a20"/>
+        <stop offset="100%" stop-color="#2a1405"/>
+      </radialGradient>
+    </defs>
+
+    <!-- TAIL -->
+    <g class="dog-tail-svg">
+      <path d="M55,120 Q15,105 25,70" stroke="url(#bodyGrad)" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <path d="M55,120 Q15,105 25,70" stroke="url(#tanGrad)" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
+    </g>
+
+    <!-- BACK LEGS -->
+    <g class="leg-back-right">
+      <rect x="72" y="135" width="16" height="45" rx="7" fill="url(#bodyGrad)"/>
+      <ellipse cx="80" cy="180" rx="11" ry="6" fill="#0d0603"/>
+    </g>
+    <g class="leg-back-left">
+      <rect x="88" y="135" width="16" height="45" rx="7" fill="#2a1a10"/>
+      <ellipse cx="96" cy="180" rx="11" ry="6" fill="#1a0f08"/>
+    </g>
+
+    <!-- BODY -->
+    <g class="dog-body-bob">
+      <ellipse cx="120" cy="120" rx="62" ry="38" fill="url(#bodyGrad)"/>
+      <!-- tan chest patch -->
+      <ellipse cx="140" cy="130" rx="30" ry="22" fill="url(#tanGrad)" opacity="0.85"/>
+      <!-- tan belly stripe -->
+      <ellipse cx="115" cy="145" rx="35" ry="10" fill="url(#tanGrad)" opacity="0.5"/>
+      <!-- fur highlight -->
+      <ellipse cx="105" cy="105" rx="40" ry="12" fill="rgba(255,255,255,0.06)"/>
+    </g>
+
+    <!-- FRONT LEGS -->
+    <g class="leg-front-left">
+      <rect x="140" y="140" width="16" height="45" rx="7" fill="#2a1a10"/>
+      <ellipse cx="148" cy="185" rx="11" ry="6" fill="#1a0f08"/>
+      <rect x="140" y="155" width="16" height="12" rx="4" fill="url(#tanGrad)" opacity="0.8"/>
+    </g>
+    <g class="leg-front-right">
+      <rect x="155" y="140" width="16" height="45" rx="7" fill="#0d0603"/>
+      <ellipse cx="163" cy="185" rx="11" ry="6" fill="#0d0603"/>
+      <rect x="155" y="155" width="16" height="12" rx="4" fill="url(#tanGrad)" opacity="0.85"/>
+    </g>
+
+    <!-- NECK -->
+    <ellipse cx="165" cy="105" rx="30" ry="28" fill="url(#bodyGrad)"/>
+
+    <!-- HEAD -->
+    <g>
+      <!-- head base -->
+      <ellipse cx="185" cy="80" rx="34" ry="32" fill="url(#bodyGrad)"/>
+      <!-- tan muzzle -->
+      <ellipse cx="212" cy="92" rx="22" ry="17" fill="url(#tanGrad)"/>
+      <!-- tan brow dots -->
+      <ellipse cx="182" cy="66" rx="7" ry="5" fill="url(#tanGrad)"/>
+      <ellipse cx="198" cy="66" rx="7" ry="5" fill="url(#tanGrad)"/>
+      <!-- tan cheek -->
+      <ellipse cx="200" cy="100" rx="10" ry="8" fill="url(#tanGrad)" opacity="0.9"/>
+
+      <!-- NOSE -->
+      <ellipse cx="230" cy="88" rx="7" ry="6" fill="url(#noseGrad)"/>
+      <ellipse cx="228" cy="86" rx="2" ry="1.5" fill="rgba(255,255,255,0.4)"/>
+
+      <!-- MOUTH -->
+      <path d="M225,95 Q222,100 215,99" stroke="#2a1405" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+      <!-- EYES -->
+      <ellipse cx="188" cy="74" rx="6" ry="6.5" fill="#fff"/>
+      <ellipse cx="204" cy="74" rx="6" ry="6.5" fill="#fff"/>
+      <ellipse cx="188" cy="74" rx="4" ry="4.5" fill="url(#eyeGrad)"/>
+      <ellipse cx="204" cy="74" rx="4" ry="4.5" fill="url(#eyeGrad)"/>
+      <ellipse cx="188" cy="74" rx="2" ry="2.5" fill="#000"/>
+      <ellipse cx="204" cy="74" rx="2" ry="2.5" fill="#000"/>
+      <ellipse cx="187" cy="72.5" rx="1.2" ry="1.2" fill="#fff"/>
+      <ellipse cx="203" cy="72.5" rx="1.2" ry="1.2" fill="#fff"/>
+
+      <!-- EARS (doberman cropped - pointed) -->
+      <g class="dog-ear-svg">
+        <path d="M172 55 L162 20 L188 50 Z" fill="url(#bodyGrad)" stroke="#0d0603" stroke-width="1"/>
+        <path d="M172 55 L166 32 L182 51 Z" fill="url(#tanGrad)" opacity="0.5"/>
+      </g>
+      <path d="M198 52 L206 18 L216 50 Z" fill="url(#bodyGrad)" stroke="#0d0603" stroke-width="1"/>
+      <path d="M200 52 L205 28 L212 50 Z" fill="url(#tanGrad)" opacity="0.4"/>
+
+      <!-- collar -->
+      <path d="M168,100 Q182,112 196,108" stroke="#7a1f6a" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <circle cx="182" cy="110" r="3" fill="#ffd166"/>
+      <circle cx="182" cy="110" r="1.5" fill="#ff8c42"/>
+    </g>
+  </svg>
+</div>
+
+<!-- BUTTON -->
+<div class="button-zone" id="buttonZone">
+  <button class="magic-btn" id="startBtn">آرینا لطفا کلیک کن 💜</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page2" id="page2">
+  <div class="page2-sun-rays"></div>
+  <div class="page2-sun"></div>
+
+  <div class="page2-clouds">
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+  </div>
+
+  <div class="letter">
+    <h2>آرینا سلام دخترم 🌸</h2>
+    <p>
+      حرف برای گفتن زیاده مخصوصا تعداد عذرخواهی هایی که باید بکنم.
+      میخاستم به این شکل بهت بگم که من واقعا بیش از حدی که خودم فکر میکردم دوستت دارم
+      و متوجه شدم سخت ترین کار دنیا اینکه صدای خنده های رو نشنوم و چشمات را نبینم
+      این برای من خیلی سخته که ترو کنارم نداشته باشم.
+      میدونم باعث ناراحتیت شدم میدونم که خیلی سخته بخشیدنم
+      ولی ازت میخوام بهم فرصت دوباره بدی که بتونم تا آخرین ثانیه های عمرم
+      از بدون کنارت خدارو شکر کنم.
+      امیدوارم این مرد خطا کار رو ببخشی.
+    </p>
+    <p class="signature">دوست دار همیشگی شما «shahan»</p>
+  </div>
+
+  <div class="dog2-zone">
+    <div class="dog2-wrap">
+      <div class="cloud2">شاهان رو ببخش 🥺</div>
+      <svg class="dog-svg" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="bodyGrad2" cx="50%" cy="40%" r="70%">
+            <stop offset="0%" stop-color="#3a2418"/>
+            <stop offset="60%" stop-color="#1f1108"/>
+            <stop offset="100%" stop-color="#0d0603"/>
+          </radialGradient>
+          <radialGradient id="tanGrad2" cx="50%" cy="40%" r="70%">
+            <stop offset="0%" stop-color="#b3762f"/>
+            <stop offset="70%" stop-color="#7a4a1e"/>
+            <stop offset="100%" stop-color="#4a2a10"/>
+          </radialGradient>
+          <radialGradient id="noseGrad2" cx="40%" cy="35%" r="60%">
+            <stop offset="0%" stop-color="#3a3a3a"/>
+            <stop offset="100%" stop-color="#000"/>
+          </radialGradient>
+          <radialGradient id="eyeGrad2" cx="40%" cy="35%" r="60%">
+            <stop offset="0%" stop-color="#8a5a20"/>
+            <stop offset="100%" stop-color="#2a1405"/>
+          </radialGradient>
+        </defs>
+
+        <g class="dog-tail-svg">
+          <path d="M55,120 Q15,105 25,70" stroke="url(#bodyGrad2)" stroke-width="9" fill="none" stroke-linecap="round"/>
+        </g>
+
+        <g class="leg-back-right">
+          <rect x="72" y="135" width="16" height="45" rx="7" fill="url(#bodyGrad2)"/>
+          <ellipse cx="80" cy="180" rx="11" ry="6" fill="#0d0603"/>
+        </g>
+        <g class="leg-back-left">
+          <rect x="88" y="135" width="16" height="45" rx="7" fill="#2a1a10"/>
+          <ellipse cx="96" cy="180" rx="11" ry="6" fill="#1a0f08"/>
+        </g>
+
+        <g class="dog-body-bob">
+          <ellipse cx="120" cy="120" rx="62" ry="38" fill="url(#bodyGrad2)"/>
+          <ellipse cx="140" cy="130" rx="30" ry="22" fill="url(#tanGrad2)" opacity="0.85"/>
+          <ellipse cx="115" cy="145" rx="35" ry="10" fill="url(#tanGrad2)" opacity="0.5"/>
+          <ellipse cx="105" cy="105" rx="40" ry="12" fill="rgba(255,255,255,0.06)"/>
+        </g>
+
+        <g class="leg-front-left">
+          <rect x="140" y="140" width="16" height="45" rx="7" fill="#2a1a10"/>
+          <ellipse cx="148" cy="185" rx="11" ry="6" fill="#1a0f08"/>
+          <rect x="140" y="155" width="16" height="12" rx="4" fill="url(#tanGrad2)" opacity="0.8"/>
+        </g>
+        <g class="leg-front-right">
+          <rect x="155" y="140" width="16" height="45" rx="7" fill="#0d0603"/>
+          <ellipse cx="163" cy="185" rx="11" ry="6" fill="#0d0603"/>
+          <rect x="155" y="155" width="16" height="12" rx="4" fill="url(#tanGrad2)" opacity="0.85"/>
+        </g>
+
+        <ellipse cx="165" cy="105" rx="30" ry="28" fill="url(#bodyGrad2)"/>
+
+        <g>
+          <ellipse cx="185" cy="80" rx="34" ry="32" fill="url(#bodyGrad2)"/>
+          <ellipse cx="212" cy="92" rx="22" ry="17" fill="url(#tanGrad2)"/>
+          <ellipse cx="182" cy="66" rx="7" ry="5" fill="url(#tanGrad2)"/>
+          <ellipse cx="198" cy="66" rx="7" ry="5" fill="url(#tanGrad2)"/>
+          <ellipse cx="200" cy="100" rx="10" ry="8" fill="url(#tanGrad2)" opacity="0.9"/>
+          <ellipse cx="230" cy="88" rx="7" ry="6" fill="url(#noseGrad2)"/>
+          <ellipse cx="228" cy="86" rx="2" ry="1.5" fill="rgba(255,255,255,0.4)"/>
+          <path d="M225,95 Q222,100 215,99" stroke="#2a1405" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <ellipse cx="188" cy="74" rx="6" ry="6.5" fill="#fff"/>
+          <ellipse cx="204" cy="74" rx="6" ry="6.5" fill="#fff"/>
+          <ellipse cx="188" cy="74" rx="4" ry="4.5" fill="url(#eyeGrad2)"/>
+          <ellipse cx="204" cy="74" rx="4" ry="4.5" fill="url(#eyeGrad2)"/>
+          <ellipse cx="188" cy="74" rx="2" ry="2.5" fill="#000"/>
+          <ellipse cx="204" cy="74" rx="2" ry="2.5" fill="#000"/>
+          <ellipse cx="187" cy="72.5" rx="1.2" ry="1.2" fill="#fff"/>
+          <ellipse cx="203" cy="72.5" rx="1.2" ry="1.2" fill="#fff"/>
+          <g class="dog-ear-svg">
+            <path d="M172 55 L162 20 L188 50 Z" fill="url(#bodyGrad2)" stroke="#0d0603" stroke-width="1"/>
+            <path d="M172 55 L166 32 L182 51 Z" fill="url(#tanGrad2)" opacity="0.5"/>
+          </g>
+          <path d="M198 52 L206 18 L216 50 Z" fill="url(#bodyGrad2)" stroke="#0d0603" stroke-width="1"/>
+          <path d="M200 52 L205 28 L212 50 Z" fill="url(#tanGrad2)" opacity="0.4"/>
+          <path d="M168,100 Q182,112 196,108" stroke="#7a1f6a" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <circle cx="182" cy="110" r="3" fill="#ffd166"/>
+          <circle cx="182" cy="110" r="1.5" fill="#ff8c42"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="form-box">
+    <label>هر حرفی می‌خوای به شاهان بزنی بگو 💌</label>
+    <textarea id="msgBox" placeholder="دلخواهت رو بنویس..."></textarea>
+    <button class="send-btn" id="sendBtn">ارسال</button>
+  </div>
+</div>
+
+<div class="toast" id="toast">ارسال شد 💜</div>
+
+<script>
+// ==== Stars ====
+const starsEl = document.getElementById('stars');
+for (let i=0; i<180; i++) {
+  const s = document.createElement('div');
+  s.className='star';
+  const size = Math.random()*2.5 + 0.8;
+  s.style.width = size+'px';
+  s.style.height = size+'px';
+  s.style.left = Math.random()*100+'%';
+  s.style.top = Math.random()*100+'%';
+  s.style.animationDelay = (Math.random()*3)+'s';
+  s.style.animationDuration = (2+Math.random()*3)+'s';
+  if (Math.random() > 0.85) s.style.boxShadow = '0 0 8px 2px #c77dff';
+  else s.style.boxShadow = '0 0 4px #fff';
+  starsEl.appendChild(s);
+}
+
+// ==== Rain ====
+const rainEl = document.getElementById('rain');
+for (let i=0; i<110; i++) {
+  const d = document.createElement('div');
+  d.className='drop';
+  d.style.left = Math.random()*100+'%';
+  d.style.top = (-20 - Math.random()*100)+'vh';
+  d.style.animationDuration = (0.7+Math.random()*1.3)+'s';
+  d.style.animationDelay = (Math.random()*4)+'s';
+  d.style.height = (18+Math.random()*30)+'px';
+  d.style.opacity = 0.25+Math.random()*0.55;
+  rainEl.appendChild(d);
+}
+
+// ==== Dog walk ====
+const dogTracker = document.getElementById('dogTracker');
+const startBtn = document.getElementById('startBtn');
+const page2 = document.getElementById('page2');
+
+const startY = 55;
+const endY = 335;
+
+let walked = false;
+
+function animateDog() {
+  if (walked) return;
+  walked = true;
+
+  const duration = 11000; // آهسته‌تر: ۱۱ ثانیه
+  const startTime = performance.now();
+
+  function step(now) {
+    const t = Math.min((now - startTime) / duration, 1);
+    const eased = t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2, 2)/2;
+
+    const currentVH = startY + (endY - startY) * eased;
+    const xDrift = 5 + 40 * eased;
+    dogTracker.style.top = currentVH + 'vh';
+    dogTracker.style.left = xDrift + '%';
+
+    if (t < 1) {
+      requestAnimationFrame(step);
+    } else {
+      const dogEl = dogTracker.querySelector('.dog-svg');
+      dogEl.style.transition = 'transform 0.8s ease';
+      dogEl.style.transform = 'scaleX(-1)';
+      dogTracker.querySelector('.cloud-bubble').style.opacity = '0';
+      dogTracker.querySelector('.cloud-bubble').style.transition = 'opacity 0.8s';
+    }
+  }
+  requestAnimationFrame(step);
+}
+
+window.addEventListener('load', () => {
+  setTimeout(animateDog, 1800);
+});
+
+// ==== Button ====
+startBtn.addEventListener('click', () => {
+  page2.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  page2.scrollTop = 0;
+});
+
+// ==== Telegram ====
+const sendBtn = document.getElementById('sendBtn');
+const msgBox = document.getElementById('msgBox');
+const toast = document.getElementById('toast');
+
+const BOT_TOKEN = '8990156150:AAGH8R4NR79Sqpe7GuS3K62hg3N7_fzHWcg';
+const CHAT_ID = '6578052788';
+
+sendBtn.addEventListener('click', async () => {
+  const text = msgBox.value.trim();
+  if (!text) { showToast('یه چیزی بنویس 💜'); return; }
+
+  sendBtn.disabled = true;
+  sendBtn.textContent = 'در حال ارسال...';
+
+  try {
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    const res = await fetch(url, {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: '💌 پیام از آرینا:\n\n' + text
+      })
+    });
+    const data = await res.json();
+    if (data.ok) {
+      showToast('پیامت رسید 💜');
+      msgBox.value = '';
+    } else {
+      showToast('ارسال نشد، دوباره تلاش کن');
+    }
+  } catch (e) {
+    showToast('خطا در ارسال');
+  }
+
+  sendBtn.disabled = false;
+  sendBtn.textContent = 'ارسال';
+});
+
+function showToast(msg) {
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+}
+</script>
+</body>
